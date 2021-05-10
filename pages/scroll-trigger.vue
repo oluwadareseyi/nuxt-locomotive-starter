@@ -2,38 +2,20 @@
   <LocomotiveScroll
     ref="scroller"
     :getted-options="{
+      offset: ['30%', 0],
       direction: 'vertical',
-      smartphone: {
-        direction: 'vertical',
-      },
-      tablet: {
-        direction: 'vertical',
-      },
+      // Other options
     }"
   >
-    <div class="example vertical">
-      <header data-scroll-section>
-        <h1>Gsap Scroll Trigger</h1>
-      </header>
-      <div class="example-section" data-scroll-section>
-        <div class="example-content">
-          <div class="example-big-square" />
-          <div class="example-small-square" data-scroll-trigger />
-        </div>
-      </div>
-      <div class="example-section" data-scroll-section>
-        <BoxComponent />
-      </div>
-      <div class="example-section" data-scroll-section>
-        <div class="example-content">
-          <div class="example-big-square" />
-          <div class="example-small-square" data-scroll-trigger />
-        </div>
-      </div>
-      <footer data-scroll-section>
-        <nuxt-link to="/image-loads/"> Go to Image Loads </nuxt-link>
-      </footer>
+    <div class="tall">
+      <h1>Korty</h1>
+      <p>Website coming up</p>
+      <nuxt-link to="/about">about</nuxt-link>
     </div>
+
+    <div class="scroll-in">Scroll In</div>
+    <div class="scroll-in">Scroll In</div>
+    <div class="scroll-in">Scroll In</div>
   </LocomotiveScroll>
 </template>
 
@@ -41,14 +23,11 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+
 export default {
-  components: {
-    BoxComponent: () =>
-      import(/* webpackPrefetch: true */ "@/components/box-component.vue"),
-  },
   mounted() {
     this.initScrolltrigger();
-    const elements = document.querySelectorAll("[data-scroll-trigger]");
+    const elements = document.querySelectorAll(".scroll-in");
     elements.forEach((element) => this.elementAnimation(element));
   },
   methods: {
@@ -71,6 +50,7 @@ export default {
         },
       });
     },
+
     elementAnimation(element) {
       gsap.from(element, {
         scrollTrigger: {
@@ -80,10 +60,25 @@ export default {
           start: "top bottom",
           end: "bottom center",
         },
-        scaleY: 0,
+        y: 40,
         ease: "none",
       });
     },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+h1 {
+  font-family: "Fraunces", sans-serif;
+}
+
+.tall {
+  height: 300vh;
+}
+
+.scroll-in {
+  height: 80vh;
+  font-size: 40px;
+}
+</style>
