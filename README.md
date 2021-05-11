@@ -1,4 +1,4 @@
-# korty-eo
+# nuxt-locomotive-starter
 
 ## Build Setup
 
