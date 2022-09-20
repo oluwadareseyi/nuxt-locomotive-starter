@@ -60,7 +60,7 @@ export default {
           start: "top bottom",
           end: "bottom center",
         },
-        y: 40,
+        xPercent: 40,
         ease: "none",
       });
     },
